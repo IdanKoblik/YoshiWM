@@ -5,7 +5,7 @@ LDFLAGS     = -L/usr/lib -lX11
 
 BUILDDIR	= build
 
-SRCFILES 	= $(wildcard) *.c)
+SRCFILES 	= $(wildcard *.c)
 OBJFILES    = $(patsubst %.c,$(BUILDDIR)/%.o,$(notdir $(SRCFILES)))
 
 EXEC 		= YoshiWm
