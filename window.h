@@ -4,7 +4,6 @@
 #include <X11/Xlib.h>
 #include <unistd.h>
 #include <stdint.h>
-#include "stb_image.h"
 #include <X11/Xutil.h>
 
 void setWallpaper(const char *wallpaperPath);

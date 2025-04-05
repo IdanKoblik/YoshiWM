@@ -14,7 +14,6 @@ void handleDestroyNotify(XEvent *event) {}
 void handleReparentNotify(XEvent *event) {}
 void handleMapNotify(XEvent *event) {}
 
-
 void handleConfigureRequestEvent(XEvent *event) {
     XConfigureRequestEvent e = event->xconfigurerequest;
     XWindowChanges changes;
@@ -25,11 +24,6 @@ void handleConfigureRequestEvent(XEvent *event) {
     changes.border_width = BORDER_WIDTH;
     changes.sibling = e.above;
     changes.stack_mode = e.detail;
-void setWallpaper(const char *wallpaperPath) {
-    char command[1024];
-    snprintf(command, sizeof(command), "feh --bg-scale %s", wallpaperPath);
-
-    XConfigureWindow(e.display, e.window, e.value_mask, &changes);
 }
 
 void frameWindow(Window win, Display *dpy, Window root) {
@@ -79,11 +73,6 @@ void setWallpaper(const char *wallpaperPath) {
     char command[1024];
     snprintf(command, sizeof(command), "feh --bg-scale %s", wallpaperPath);
 
-    int output = system(command);
-    if (output != 0)
-        fprintf(stderr, "Error: feh command failed to set wallpaper\n");
-    else
-        printf("Wallpaper set successfully with feh\n");
     int output = system(command);
     if (output != 0)
         fprintf(stderr, "Error: feh command failed to set wallpaper\n");
