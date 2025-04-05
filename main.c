@@ -4,6 +4,9 @@
 #include <string.h>
 #include <X11/cursorfont.h>
 #include "event.h"
+#include "toml.h"
+#include "config.h"
+#include "window.h"
 
 
 int main(void) {
@@ -17,6 +20,8 @@ int main(void) {
         exit(1);
     }
 
+    printf("Display opened successfully.\n");
+
     root = DefaultRootWindow(display);
     XSelectInput(display, DefaultRootWindow(display), KeyPressMask | ButtonPressMask);
     XSync(display, 0);
@@ -25,6 +30,24 @@ int main(void) {
     XDefineCursor(display, root, cursor);
     XSync(display, False);
 
+    config *cfg = malloc(sizeof(config));
+    if (cfg == NULL) {
+        fprintf(stderr, "Memory allocation failed for config\n");
+        return 1;
+    }
+
+    printf("Loading config...\n");
+    if (loadConfig(cfg) != 0) {
+        fprintf(stderr, "Failed to load config.\n");
+        return 1;
+    }
+
+    if (cfg->generalConfig.wallpaperPath) {
+        printf("Wallpaper path: %s\n", cfg->generalConfig.wallpaperPath);
+        setRootBackground(display, root, cfg->generalConfig.wallpaperPath);
+    }
+    
+    printf("Entering event loop...\n");
     for (;;) {
         XNextEvent(display, &event);
         printf("Event received: %d\n", event.type);  // Debugging line
@@ -33,5 +56,6 @@ int main(void) {
     }
 
     XCloseDisplay(display);
+    free(cfg);
     return 0;
 }
