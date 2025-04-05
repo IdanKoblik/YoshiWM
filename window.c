@@ -1,10 +1,7 @@
 #include "window.h"
 #include <X11/Xlib.h>
-<<<<<<< HEAD
 #include <X11/Xutil.h>
 #include <stdbool.h>
-=======
->>>>>>> f79ff52 (Map window + other things)
 
 void handleCreateNotify(XEvent *event) {}
 void handleDestroyNotify(XEvent *event) {}
