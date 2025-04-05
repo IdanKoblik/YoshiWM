@@ -5,4 +5,4 @@
 
 void handleMouseEvent(XEvent *event);
 
-#endif
+#endif // _MOUSE_EVENT_H_
