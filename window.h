@@ -1,5 +1,5 @@
-#ifndef WINDOW_H_
-#define WINDOW_H_
+#ifndef _WINDOW_H_
+#define _WINDOW_H_
 
 #include <X11/Xlib.h>
 #include <unistd.h>
@@ -13,4 +13,4 @@ void handleUnmapNotify(XEvent *event, Display *dpy, Window root);
 void handleConfigureRequestEvent(XEvent *event);
 void handleMapRequest(XEvent *event, Display *dpy, Window root);
 
-#endif // WINDOW_H_
+#endif // _WINDOW_H_
