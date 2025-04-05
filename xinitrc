@@ -1,3 +1,4 @@
 xterm &
 
 exec ./build/YoshiWm
+
