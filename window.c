@@ -19,7 +19,7 @@ void handleConfigureRequestEvent(XEvent *event) {
     changes.y = e.y;
     changes.width = e.width;
     changes.height = e.height;
-    changes.border_width = BORDER_WIDTH; // just a random number
+    changes.border_width = BORDER_WIDTH;
     changes.sibling = e.above;
     changes.stack_mode = e.detail;
 
