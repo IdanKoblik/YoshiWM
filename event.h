@@ -4,6 +4,6 @@
 #include <X11/Xlib.h>
 #include <stdio.h>
 
-void eventHandler(XEvent *event);
+void eventHandler(XEvent *event, Display *dpy, Window root);
 
 #endif
