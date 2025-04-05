@@ -26,15 +26,11 @@ int main(void) {
 
     for (;;) {
         XNextEvent(display, &event);
-        
-        EventHandler handler = eventHandler(&event);
-        if (!handler)
-            printf("no impl for this event :(");
-
+        printf("Event received: %d\n", event.type);  // Debugging line
+        eventHandler(&event);
         XSync(display, 0);
     }
 
     XCloseDisplay(display);
     return 0;
 }
-

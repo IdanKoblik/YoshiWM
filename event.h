@@ -2,11 +2,8 @@
 #define EVENT_H
 
 #include <X11/Xlib.h>
+#include <stdio.h>
 
-void handleKeyboardEvent(XEvent *event);
-void handleMouseEvent(XEvent *event);
-
-typedef void (*EventHandler)(XEvent *);
-EventHandler eventHandler(XEvent *event);
+void eventHandler(XEvent *event);
 
 #endif

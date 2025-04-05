@@ -1,9 +1,8 @@
-#include "event.h"
-#include "stdio.h"
+#include "mouse.h"
 
 void handleMouseEvent(XEvent *event) {
     if (event->type != ButtonPress)
         return;
 
-    printf("OH MOUSE");
+    printf("MOUSE\n");
 }

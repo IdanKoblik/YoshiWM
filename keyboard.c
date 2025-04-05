@@ -1,9 +1,8 @@
-#include "event.h"
-#include "stdio.h"
+#include "keyboard.h"
 
 void handleKeyboardEvent(XEvent *event) {
     if (event->type != KeyPress)
         return;
 
-    printf("OH KEYBOARD");
+    printf("KEYBOARD\n");
 }
