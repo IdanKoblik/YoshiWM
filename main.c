@@ -43,7 +43,7 @@ int main(void) {
 
     if (cfg->generalConfig.wallpaperPath) {
         printf("Wallpaper path: %s\n", cfg->generalConfig.wallpaperPath);
-        setRootBackground(display, root, cfg->generalConfig.wallpaperPath);
+        setWallpaper(cfg->generalConfig.wallpaperPath);
     }
     
     printf("Entering event loop...\n");
@@ -54,6 +54,6 @@ int main(void) {
     }
 
     XCloseDisplay(display);
-    free(cfg);
+    freeConfig(cfg);
     return 0;
 }
