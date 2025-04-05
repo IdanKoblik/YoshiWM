@@ -8,7 +8,6 @@
 #include "config.h"
 #include "window.h"
 
-
 int main(void) {
     Display *display;
     XEvent event;
@@ -46,7 +45,7 @@ int main(void) {
         printf("Wallpaper path: %s\n", cfg->generalConfig.wallpaperPath);
         setWallpaper(cfg->generalConfig.wallpaperPath);
     }
-    
+
     printf("Entering event loop...\n");
     for (;;) {
         XNextEvent(display, &event);
