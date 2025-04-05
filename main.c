@@ -5,10 +5,20 @@
 #include <X11/cursorfont.h>
 #include "event.h"
 
+
 int main(void) {
     Display *display;
     XEvent event;
     Window root;
+
+    Clients *cls = (Clients *)malloc(sizeof(Clients));
+    if(!cls) {
+        fprintf(stderr, "Faild to allocate memory for windows\n");
+        exit(1);
+    }
+
+    cls->clients = (Window *)malloc(MAX_CLIENTS * sizeof(Window));
+    cls->index = 0;
 
     display = XOpenDisplay(NULL);
     if (display == NULL) {

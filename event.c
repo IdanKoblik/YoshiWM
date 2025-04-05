@@ -2,11 +2,12 @@
 #include "mouse.h"
 #include "keyboard.h"
 #include "window.h"
+#include <X11/X.h>
 #include <stdio.h>
 
 
 void eventHandler(XEvent *event, Display *dpy, Window root) {
-    printf("EventHandler called with event type: %d\n", event->type);
+    printf("EventHandler called with event type: %d\n", event->type);  
     switch (event->type) {
         case KeyPress:
             handleKeyboardEvent(event);
