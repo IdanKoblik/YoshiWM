@@ -5,6 +5,7 @@
 #include <X11/cursorfont.h>
 #include "event.h"
 
+
 int main(void) {
     Display *display;
     XEvent event;
@@ -27,7 +28,7 @@ int main(void) {
     for (;;) {
         XNextEvent(display, &event);
         printf("Event received: %d\n", event.type);  // Debugging line
-        eventHandler(&event);
+        eventHandler(&event, display, root);
         XSync(display, 0);
     }
 
