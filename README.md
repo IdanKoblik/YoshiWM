@@ -1,5 +1,13 @@
 <h1 align="center">YoshiWM</h1>
 
-[<img src="assets/IdanLogo.png">](https://github.com/IdanKoblik)
-[<img src="assets/yoshiLogo.png">](https://github.com/IdanKoblik/YoshiWM)
-[<img src="assets/cr4ziLogo.png">](https://github.com/Cr4zi)
+<div style="display: flex; justify-content: center; gap: 0;">
+  <a href="https://github.com/IdanKoblik">
+    <img src="assets/IdanLogo.png" style="display: block;">
+  </a>
+  <a href="https://github.com/IdanKoblik/YoshiWM">
+    <img src="assets/yoshiLogo.png" style="display: block;">
+  </a>
+  <a href="https://github.com/Cr4zi">
+    <img src="assets/cr4ziLogo.png" style="display: block;">
+  </a>
+</div>
