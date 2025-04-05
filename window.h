@@ -7,6 +7,7 @@
 #include "stb_image.h"
 #include <X11/Xutil.h>
 
+void setWallpaper(const char *wallpaperPath);
 void handleCreateNotify(XEvent *event);
 void handleDestroyNotify(XEvent *event);
 void handleReparentNotify(XEvent *event);

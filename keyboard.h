@@ -5,4 +5,4 @@
 
 void handleKeyboardEvent(XEvent *event);
 
-#endif
+#endif // _KEYBOARD_EVENT_H_

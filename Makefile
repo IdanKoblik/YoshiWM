@@ -12,10 +12,6 @@ OBJFILES    = $(patsubst %.c,$(BUILDDIR)/%.o,$(SRCFILES))
 TOMLC99_SRC = externals/tomlc99/toml.c
 TOMLC99_OBJ = $(BUILDDIR)/toml.o
 
-# Include stb_image_impl source file
-STB_IMAGE_SRC = stb_image.c
-STB_IMAGE_OBJ = $(BUILDDIR)/stb_image.o
-
 EXEC        = YoshiWm
 
 all: $(BUILDDIR)/$(EXEC)

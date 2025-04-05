@@ -2,6 +2,8 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #define BORDER_WIDTH 2
 #define BORDER_COLOR 0xff0000
@@ -11,6 +13,7 @@ void handleCreateNotify(XEvent *event) {}
 void handleDestroyNotify(XEvent *event) {}
 void handleReparentNotify(XEvent *event) {}
 void handleMapNotify(XEvent *event) {}
+
 
 void handleConfigureRequestEvent(XEvent *event) {
     XConfigureRequestEvent e = event->xconfigurerequest;
@@ -22,6 +25,9 @@ void handleConfigureRequestEvent(XEvent *event) {
     changes.border_width = BORDER_WIDTH;
     changes.sibling = e.above;
     changes.stack_mode = e.detail;
+void setWallpaper(const char *wallpaperPath) {
+    char command[1024];
+    snprintf(command, sizeof(command), "feh --bg-scale %s", wallpaperPath);
 
     XConfigureWindow(e.display, e.window, e.value_mask, &changes);
 }
@@ -73,6 +79,11 @@ void setWallpaper(const char *wallpaperPath) {
     char command[1024];
     snprintf(command, sizeof(command), "feh --bg-scale %s", wallpaperPath);
 
+    int output = system(command);
+    if (output != 0)
+        fprintf(stderr, "Error: feh command failed to set wallpaper\n");
+    else
+        printf("Wallpaper set successfully with feh\n");
     int output = system(command);
     if (output != 0)
         fprintf(stderr, "Error: feh command failed to set wallpaper\n");
