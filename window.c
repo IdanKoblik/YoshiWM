@@ -5,7 +5,7 @@
 
 #define BORDER_WIDTH 2
 #define BORDER_COLOR 0xff0000
-#define BG_COLOR 0x0000ff;
+#define BG_COLOR 0x0000ff
 
 void handleCreateNotify(XEvent *event) {}
 void handleDestroyNotify(XEvent *event) {}
