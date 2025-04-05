@@ -3,6 +3,10 @@
 #include <X11/Xutil.h>
 #include <stdbool.h>
 
+#define BORDER_WIDTH 2
+#define BORDER_COLOR 0xff0000
+#define BG_COLOR 0x0000ff;
+
 void handleCreateNotify(XEvent *event) {}
 void handleDestroyNotify(XEvent *event) {}
 void handleReparentNotify(XEvent *event) {}
@@ -15,7 +19,7 @@ void handleConfigureRequestEvent(XEvent *event) {
     changes.y = e.y;
     changes.width = e.width;
     changes.height = e.height;
-    changes.border_width = 2; // just a random number
+    changes.border_width = BORDER_WIDTH; // just a random number
     changes.sibling = e.above;
     changes.stack_mode = e.detail;
 
@@ -23,10 +27,6 @@ void handleConfigureRequestEvent(XEvent *event) {
 }
 
 void frameWindow(Window win, Display *dpy, Window root) {
-    const unsigned int BORDER_WIDTH = 2;
-    const unsigned long BORDER_COLOR = 0xff0000;
-    const unsigned long BG_COLOR = 0x0000ff;
-
     XWindowAttributes xAttrs;
     XGetWindowAttributes(dpy, win, &xAttrs);
 
