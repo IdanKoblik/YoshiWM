@@ -2,32 +2,39 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <X11/cursorfont.h>
+#include "event.h"
 
 int main(void) {
     Display *display;
-    Window window;
     XEvent event;
+    Window root;
 
     display = XOpenDisplay(NULL);
     if (display == NULL) {
-        fprintf(stderr, "Error accure while trying to open a display\n");
+        fprintf(stderr, "Error occurred while trying to open a display\n");
         exit(1);
     }
 
-    int screen = DefaultScreen(display);
+    root = DefaultRootWindow(display);
+    XSelectInput(display, DefaultRootWindow(display), KeyPressMask | ButtonPressMask);
+    XSync(display, 0);
 
-    window = XCreateSimpleWindow(display,
-        RootWindow(display, screen),
-        10, 10, 200, 200, 1,
-        BlackPixel(display, screen),
-        WhitePixel(display, screen)
-    );
+    Cursor cursor = XCreateFontCursor(display, XC_left_ptr);
+    XDefineCursor(display, root, cursor);
+    XSync(display, False);
 
-    while (1) {
+    for (;;) {
         XNextEvent(display, &event);
+        
+        EventHandler handler = eventHandler(&event);
+        if (!handler)
+            printf("no impl for this event :(");
+
+        XSync(display, 0);
     }
 
     XCloseDisplay(display);
-
     return 0;
 }
+

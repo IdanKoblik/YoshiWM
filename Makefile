@@ -2,15 +2,12 @@ CC          = gcc
 CFLAGS      = -Wall -I/usr/include/X11
 LDFLAGS     = -L/usr/lib -lX11
 
+BUILDDIR    = build
 
-BUILDDIR	= build
-
-SRCFILES 	= $(wildcard *.c)
+SRCFILES    = $(wildcard *.c)
 OBJFILES    = $(patsubst %.c,$(BUILDDIR)/%.o,$(notdir $(SRCFILES)))
 
-EXEC 		= YoshiWm
-
-all: $(BUILDDIR)/$(EXECUTABLE)
+EXEC        = YoshiWm
 
 $(BUILDDIR)/$(EXEC): $(OBJFILES)
 	@mkdir -p $(BUILDDIR)
@@ -22,3 +19,6 @@ $(BUILDDIR)/%.o: %.c
 
 clean:
 	rm -f $(BUILDDIR)/*.o $(BUILDDIR)/$(EXEC)
+
+.PHONY: clean
+
